@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+</head>
+
+<body>
+<nav class="level">
+    <div class="level-left">
+        <div class="level-item"><a class="button is-primary is-rounded" href="add/">Add Student</a></div>
+    </div>
+
+    <div class="level-right">
+        <div class="level-item"><a class="button is-primary is-rounded" href="  {% url 'logout' %}">Log Out</a> </div>
+    </div>
+</nav>
+<table class="table is-hoverable" style="width:100%">
+<tr>
+    <th>College</th>
+    <th>Name</th>
+    <th>Mocktest1 Marks</th>
+    <th>Action</th>
+</tr>
+
+{% for student in k%}
+<tr>
+    <td>{{student.college__acronym}}</td>
+    <td>{{student.name}}</td>
+    <td>{{student.mocktest1__total}}</td>
+    <td>
+        <a href="">edit | </a>
+        <a href="">delete</a>
+    </td>
+</tr>
+    {% endfor %}
+</table>
+
+</body>
+
+</html>

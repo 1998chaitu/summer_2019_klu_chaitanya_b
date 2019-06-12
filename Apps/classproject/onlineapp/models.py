@@ -5,10 +5,10 @@ from django.db import models
 class College(models.Model):
     name=models.CharField(max_length=50)
     location=models.CharField(max_length=50)
-    acronym=models.CharField(max_length=10)
+    acronym=models.CharField(max_length=10,unique=True)
     contact=models.CharField(max_length=100)
     def __str__(self):
-        return self.acronym
+            return self.acronym
 
 class Student(models.Model):
     name=models.CharField(max_length=50)
