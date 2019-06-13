@@ -25,7 +25,8 @@ from onlineapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('onlineapp.urls'))
+    path('', include('onlineapp.urls')),
+    url(r'^api-auth/', include('rest_framework.urls'))
     #path('hello/', views.hello),
     #path('hello/students/<str:acronym>/', views.stu, name='Students')
 ]
