@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+</head>
+<style>
+    .HELLO{
+        margin:0 auto;
+        width:20%;
+    }
+</style>
+<body>
+
+<div class="box has-text-centered HELLO">
+<br><h1>LogIn</h1><br>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <input class="button is-link"  type="submit" value="login" >
+        </form>
+<br>
+
+<a class="button is-link" href="{% url 'signup1' %}">sign up</a>
+
+</div>
+</body>
+</html>
