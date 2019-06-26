@@ -5,6 +5,18 @@
     <meta charset="UTF-8">
     <title>IPL</title>
     <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <style>
+        span {
+            display:inline-block;
+        }
+        .Table {
+            padding:200px;
+            padding-left:0;
+            padding-right:0;
+            padding-bottom:0;
+            padding-top:20px;
+        }
+    </style>
 </head>
 
 <script>
@@ -15,15 +27,24 @@
 </script>
 
 <body>
-
-
-<select id="Year" onchange="change_year()">
+<nav class="level box" style="margin-bottom:0;" >
+<div class="DM">
+    <select id="Year" onchange="change_year()">
     {% for y in range %}
   <option selected>{{ y }}</option>
     {% endfor %}
 </select>
+</div>
 
-<table class="table" border=0 style="width:100%">
+<div style="padding-left:200px;color:"><h3 class="title is-3" style="color:#3498db;"><img src="/static/logos/ipl.png" style="height:50px;width:60px"> Welcome To Indian Premier League <img src="/static/logos/ipl.png" style="height:50px;width:60px"></h3></div>
+
+<div style="padding-left:200px;color:"><div><a class="button is-link is-rounded" href="">Log Out</a> </div></div>
+</nav>
+
+<div align="right"><a class="button is-info" href="">Points Table</a></div>
+
+<div class="Table">
+    <table class="table" border=0 style="width:100%">
 <tr>
     <th>Team 1</th>
     <th>Team 2</th>
@@ -44,6 +65,7 @@
     {% endfor %}
 
 </table>
+</div>
 
 <div class="pagination">
     <span class="step-links">
