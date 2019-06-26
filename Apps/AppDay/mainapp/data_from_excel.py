@@ -13,9 +13,10 @@ import datetime
 @click.command()
 @click.argument('args',nargs=2)
 def cli(args):
+    print(args[0], args[1])
     wb = load_workbook(filename=args[0])
     #print(wb.sheetnames)
-    print(args[0],args[1])
+
     #return
     data = wb['deliveries']
     flag=0
@@ -33,7 +34,7 @@ def cli(args):
         # print()
 
         if args[1] == 'D':
-            print('123')
+            print(vals[0])
             d = Deliveries(match_id=Matches.objects.get(id=vals[0]), inning=vals[1], batting_team=vals[2], bowling_team=vals[3], over=vals[4], ball=vals[5], batsman=vals[6], non_stricker=vals[7], bowler=vals[8], is_super_over=vals[9], wide_runs=vals[10], bye_runs=vals[11], legbye_runs=vals[12], noball_runs=vals[13], penality_runs=vals[14], batsman_runs=vals[15], extra_runs=vals[16], total_runs=vals[17], player_dismissed=vals[18], dismissal_kind=vals[19], fielder=vals[20])
             d.save()
 

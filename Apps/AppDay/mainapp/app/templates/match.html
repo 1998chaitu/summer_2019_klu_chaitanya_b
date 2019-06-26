@@ -5,36 +5,74 @@
     <meta charset="UTF-8">
     <title>IPL</title>
     <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <style>
+        .box {
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            border: 1px solid blue;
+            background-color:#ebf5fb;
+        }
+        .Table {
+           padding:270px;
+           padding-left:100px;
+           padding-right:0px;
+           padding-bottom:0;
+           background-color: #fcf3cf ;
+        }
+
+    table thead tr{
+        display:block;
+    }
+
+    table th,table td{
+        width:230px;//fixed width
+    }
+
+    table  tbody{
+      display:block;
+      height:300px;
+      overflow:auto;//set tbody to auto
+    }
+    </style>
 </head>
 <body>
-<h1 class="title is-1" align="center" style="color:red"> <img src="/static/logos/{{match.team1}}.png" style="height:50px;width:50px"> {{match.team1}} Vs {{match.team2}}<img src="/static/logos/{{match.team2}}.png" style="height:50px;width:50px"></h1>
-<h4 class="title is-4" align="center" style="color:blue">Toss won by {{match.toss_winner}} and choose to {{match.toss_decision}}</h4>
-<h4 class="title is-4" align="center" style="color:yellow">Man of the Match - {{match.player_of_match}}</h4>
+<div class="box has-text-centered">
+    <h2 class="title is-2" align="center" style="color:red"> <img src="/static/logos/{{match.team1}}.png" style="height:70px;width:70px"> {{match.team1}} Vs {{match.team2}}<img src="/static/logos/{{match.team2}}.png" style="height:70px;width:70px"></h2>
+<h5 class="title is-5" align="center" style="color:blue">Toss won by {{match.toss_winner}} and choose to {{match.toss_decision}}</h5>
+<h5 class="title is-5" align="center" >Man of the Match - {{match.player_of_match}}</h5>
 {% if match.winner == match.toss_winner %}
 {% if match.toss_decision == "field" %}
-<h3 class="title is-3" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_wickets}} Wickets</h3>
+<h4 class="title is-4" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_wickets}} Wickets</h4>
 {% endif %}
 {% endif %}
 
 {% if match.winner == match.toss_winner %}
 {% if match.toss_decision == "bat" %}
-<h3 class="title is-3" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_runs}} Runs</h3>
+<h4 class="title is-4" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_runs}} Runs</h4>
 {% endif %}
 {% endif %}
 
 {% if match.winner != match.toss_winner %}
 {% if match.toss_decision != "bat" %}
-<h3 class="title is-3" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_wickets}} Runs</h3>
+<h4 class="title is-4" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_wickets}} Runs</h4>
 {% endif %}
 {% endif %}
 
 {% if match.winner != match.toss_winner %}
 {% if match.toss_decision != "field" %}
-<h3 class="title is-3" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_runs}} Wickets</h3>
+<h4 class="title is-4" align="center" style="color:green">{{match.winner}} Won by {{match.win_by_runs}} Wickets</h4>
 {% endif %}
 {% endif %}
+</div>
 
-<table class="table" border=0 style="width:100%">
+
+
+<div class="Table">
+<table class="table table-fixed1" style="width:100%;background-color: #fcf3cf ;">
+
+    <thead>
 <tr>
     <th>Over</th>
     <th>Ball</th>
@@ -42,6 +80,7 @@
     <th>Bowler</th>
     <th>Runs</th>
 </tr>
+    </thead>
 
     {% for x in del %}
     <tr>
@@ -54,6 +93,7 @@
     {% endfor %}
 
 </table>
+</div>
 
 </body>
 </html>
